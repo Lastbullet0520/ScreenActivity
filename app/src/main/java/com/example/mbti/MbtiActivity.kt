@@ -73,7 +73,7 @@ open class Mbti {
             context?.startActivity(intent)
             val exp = Explorer()
             when(mbti) {
-                "탐험가형" -> "${/*TODO*/}"
+                "탐험가형" -> "${Explorer.sp()}"
                 "외교관형" -> "${/*TODO*/}"
                 "분석가형" -> "${/*TODO*/}"
                 "관리자형" -> "${/*TODO*/}"
@@ -86,8 +86,10 @@ open class Mbti {
 }
 
 
-class Explorer : Mbti() { // *S*P
-//TODO
+open class Explorer : Mbti() { // *S*P
+    open fun sp() {
+        val sp = arrayListOf("intj","intp","entj","entp")
+    }
 
 }
 
