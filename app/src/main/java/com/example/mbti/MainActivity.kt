@@ -35,19 +35,19 @@ class MainActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "너 T야?", fontSize = 24.sp)
+            Text(text = "test 드가자", fontSize = 24.sp)
             Button(onClick = {
-                val intent = Intent(context, NActivity::class.java)
+                val intent = Intent(context, MbtiActivity::class.java)
                 context?.startActivity(intent)
             }) {
-                Text(text = "맞아")
+                Text(text = "ㄱㄱ")
 
             }
             Button(onClick = {
                 val intent = Intent(context, BackwardActivity::class.java)
                 context?.startActivity(intent)
             }) {
-                Text(text = "아니야")
+                Text(text = "ㄴㄴ")
 
             }
         }

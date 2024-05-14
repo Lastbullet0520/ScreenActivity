@@ -23,10 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NActivity" />
+        <activity android:name=".ResultActivity" />
         <activity android:name=".BackwardActivity" />
         <activity android:name=".SubActivity" />
         <activity android:name=".SActivity" />
+        <activity android:name="MbtiActivity"/>
     </application>
 
 </manifest>
