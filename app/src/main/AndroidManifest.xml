@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NActivity" />
-        <activity android:name=".LastActivity" />
+        <activity android:name=".BackwardActivity" />
         <activity android:name=".SubActivity" />
         <activity android:name=".SActivity" />
     </application>

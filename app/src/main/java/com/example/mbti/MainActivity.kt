@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
             }
             Button(onClick = {
-                val intent = Intent(context, LastActivity::class.java)
+                val intent = Intent(context, BackwardActivity::class.java)
                 context?.startActivity(intent)
             }) {
                 Text(text = "아니야")

@@ -47,49 +47,26 @@ class SActivity : ComponentActivity() {
                     .width(400.dp)
                     .height(400.dp)
             ) {
-                MbtiImage(modifier = Modifier
-                    .align(Alignment.TopStart), type = R.drawable.istj)
-//                Image(
-//                    modifier =
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.istj),
-//                    contentDescription = "istj",
-//                    contentScale = ContentScale.FillBounds
-//                )
-                MbtiImage(modifier = Modifier
-                    .align(Alignment.TopEnd), type = R.drawable.istp)
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.TopEnd)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.istp),
-//                    contentDescription = "istp",
-//                    contentScale = ContentScale.FillBounds
-//                )
-                MbtiImage(modifier = Modifier
-                    .align(Alignment.BottomStart), type = R.drawable.estj)
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.BottomStart)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.estj),
-//                    contentDescription = "estj",
-//                    contentScale = ContentScale.FillBounds
-//                )
-                MbtiImage(modifier = Modifier
-                    .align(Alignment.BottomEnd), type = R.drawable.estp)
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.BottomEnd)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.estp),
-//                    contentDescription = "estp",
-//                    contentScale = ContentScale.FillBounds
-//                )
+                MbtiImage(
+                    modifier = Modifier
+                        .align(Alignment.TopStart), type = R.drawable.istj
+                )
+
+                MbtiImage(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd), type = R.drawable.istp
+                )
+
+                MbtiImage(
+                    modifier = Modifier
+                        .align(Alignment.BottomStart), type = R.drawable.estj
+                )
+
+                MbtiImage(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd), type = R.drawable.estp
+                )
+
             }
             Button(onClick = {
                 context?.finish()
@@ -98,6 +75,7 @@ class SActivity : ComponentActivity() {
             }
         }
     }
+
     @Composable
     fun MbtiImage(modifier: Modifier, type: Int) {
         Image(

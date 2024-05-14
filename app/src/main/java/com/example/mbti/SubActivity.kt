@@ -50,46 +50,16 @@ class SubActivity : ComponentActivity() {
                     .fillMaxWidth()
                     .height(400.dp)
             ) {
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.TopStart)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.intj),
-//                    contentDescription = "intj",
-//                    contentScale = ContentScale.FillBounds
-//                )
-                MbtiImage(modifier = Modifier
-                        .align(Alignment.TopStart), type = R.drawable.intj)
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.TopEnd)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.intp),
-//                    contentDescription = "intp",
-//                    contentScale = ContentScale.FillBounds
-//                )
+
+                MbtiImage(
+                    modifier = Modifier
+                        .align(Alignment.TopStart), type = R.drawable.intj
+                )
+
                 MbtiImage(modifier = Modifier.align(Alignment.TopEnd), type = R.drawable.intp)
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.BottomStart)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.entj),
-//                    contentDescription = "entj",
-//                    contentScale = ContentScale.FillBounds
-//                )
+
                 MbtiImage(modifier = Modifier.align(Alignment.BottomStart), type = R.drawable.entj)
-//                Image(
-//                    modifier = Modifier
-//                        .align(Alignment.BottomEnd)
-//                        .width(200.dp)
-//                        .height(200.dp),
-//                    painter = painterResource(id = R.drawable.entp),
-//                    contentDescription = "entp",
-//                    contentScale = ContentScale.FillBounds
-//                )
+
                 MbtiImage(modifier = Modifier.align(Alignment.BottomEnd), type = R.drawable.entp)
             }
             Button(onClick = {
@@ -102,6 +72,7 @@ class SubActivity : ComponentActivity() {
 
 
     }
+
     @Composable
     fun MbtiImage(modifier: Modifier, type: Int) {
         Image(

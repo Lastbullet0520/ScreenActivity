@@ -15,18 +15,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.example.mbti.ui.theme.MbtiTheme
 
-class LastActivity : ComponentActivity() {
+class BackwardActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MbtiTheme {
-                LastScreen()
+                BackwardScreen()
             }
         }
     }
 
     @Composable
-    fun LastScreen() {
+    fun BackwardScreen() {
         val context = LocalContext.current as? Activity
         Column(
             modifier = Modifier.fillMaxSize(),
