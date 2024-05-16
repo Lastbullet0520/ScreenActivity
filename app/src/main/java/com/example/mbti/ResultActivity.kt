@@ -34,7 +34,12 @@ class ResultActivity : ComponentActivity() {
 
     @Composable
     fun ResultScreen() {
+        /* MbtiActivity에서 넘긴 정보를 ResultActivity에 받아오기 */
         val context = LocalContext.current as? Activity
+        val topStartImg = intent.getStringArrayListExtra("type")?.get(0)
+        val topEndImg = intent.getStringArrayListExtra("type")?.get(1)
+        val bottomStartImg = intent.getStringArrayListExtra("type")?.get(2)
+        val bottomEndImg = intent.getStringArrayListExtra("type")?.get(3)
 
         Column(
             modifier = Modifier
@@ -49,22 +54,22 @@ class ResultActivity : ComponentActivity() {
             ) {
                 MbtiImage(
                     modifier = Modifier
-                        .align(Alignment.TopStart), type = R.drawable.istj      // type를 변수로 줄 예정 TODO
+                        .align(Alignment.TopStart), type = topStartImg   // type를 변수로 줄 예정 TODO
                 )
 
                 MbtiImage(
                     modifier = Modifier
-                        .align(Alignment.TopEnd), type = R.drawable.istp // type를 변수로 줄 예정 TODO
+                        .align(Alignment.TopEnd), type = topEndImg // type를 변수로 줄 예정 TODO
                 )
 
                 MbtiImage(
                     modifier = Modifier
-                        .align(Alignment.BottomStart), type = R.drawable.estj // type를 변수로 줄 예정 TODO
+                        .align(Alignment.BottomStart), type = bottomStartImg// type를 변수로 줄 예정 TODO
                 )
 
                 MbtiImage(
                     modifier = Modifier
-                        .align(Alignment.BottomEnd), type = R.drawable.estp // type를 변수로 줄 예정 TODO
+                        .align(Alignment.BottomEnd), type = bottomEndImg // type를 변수로 줄 예정 TODO
                 )
 
             }
@@ -77,14 +82,25 @@ class ResultActivity : ComponentActivity() {
     }
 
     @Composable
-    fun MbtiImage(modifier: Modifier, type: Int) {
-        Image(
-            modifier = modifier
-                .width(200.dp)
-                .height(200.dp),
-            painter = painterResource(id = type),
-            contentDescription = "$type",
-            contentScale = ContentScale.FillBounds,
-        )
+    fun MbtiImage(modifier: Modifier, type: String?) {
+        val typeEncoder = if (type.isNullOrEmpty()) {
+            0
+        } else {
+            resources.getIdentifier("$type", "drawable", "com.example.mbti")
+        }
+        if (typeEncoder != 0 ) {
+            Image(
+                modifier = modifier
+                    .width(200.dp)
+                    .height(200.dp),
+                painter = painterResource(id = typeEncoder),
+                contentDescription = type,
+                contentScale = ContentScale.FillBounds,
+            )
+        } else {
+            // Optionally, you can display a default or error image here
+            val topStartImg = intent.getStringArrayListExtra("type")
+            Text(text = "Image not found, type is $type \n $topStartImg", modifier = modifier)
+        }
     }
 }

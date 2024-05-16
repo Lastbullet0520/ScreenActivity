@@ -37,13 +37,12 @@ open class MbtiActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()
         ) {
-            val context = LocalContext.current as? Activity
             Text(text = "당신의 유형은?")
-             val MyMbti = Mbti()
-            MyMbti.knowMbti(mbti = "탐험가형")
-            MyMbti.knowMbti(mbti = "외교관형")
-            MyMbti.knowMbti(mbti = "분석가형")
-            MyMbti.knowMbti(mbti = "관리자형")
+             val myMbti = Mbti()
+            myMbti.KnowMbti(mbti = "탐험가형")
+            myMbti.KnowMbti(mbti = "외교관형")
+            myMbti.KnowMbti(mbti = "분석가형")
+            myMbti.KnowMbti(mbti = "관리자형")
         }
 
     }
@@ -65,20 +64,32 @@ open class MbtiActivity : ComponentActivity() {
 
 open class Mbti {
     @Composable
-    open fun knowMbti(mbti: String) {
+    open fun KnowMbti(mbti: String) {
         val context = LocalContext.current as? Activity
-        Divider( modifier = Modifier.height(3.dp))  // 반복되니 추후 변경
+        Divider( modifier = Modifier.height(3.dp))
         Button(onClick = {
             val intent = Intent(context, ResultActivity::class.java)
             context?.startActivity(intent)
             val exp = Explorer()
+            val dip = Diplomats()
+            val ana = Analysts()
+            val sen = Sentinels()
             when(mbti) {
-                "탐험가형" -> "${Explorer.sp()}"
-                "외교관형" -> "${/*TODO*/}"
-                "분석가형" -> "${/*TODO*/}"
-                "관리자형" -> "${/*TODO*/}"
+                "탐험가형" -> {
+                    intent.putExtra("type",exp.expListOf()) // '만약'(when) 여기서 버튼이 해당 값으로 들어가면, 값을 넘겨주는 것으로
+                }
+
+                "외교관형" -> {
+                    intent.putExtra("type", dip.dipListOf())
+                }
+                "분석가형" -> {
+                    intent.putExtra("type", ana.anaListOf())
+                }
+                "관리자형" -> {
+                    intent.putExtra("type",sen.senListOf())
+                }
             }
-            intent.putExtra("type",mbti)  // '만약'(if) 여기서 버튼이 해당 값으로 들어가면, 값을 넘겨주는 것으로 TODO
+            context?.startActivity(intent)
         }) {
             Text(text = mbti)
         }
@@ -87,20 +98,27 @@ open class Mbti {
 
 
 open class Explorer : Mbti() { // *S*P
-    open fun sp() {
-        val sp = arrayListOf("intj","intp","entj","entp")
+    fun expListOf(): ArrayList<String> {
+        return arrayListOf("istp", "isfp", "estp", "esfp")
     }
 
 }
 
 class Diplomats : Mbti() {  // *NF*
-//TODO
+    fun dipListOf(): ArrayList<String> {
+        return arrayListOf("infp", "infj", "enfp", "enfj")
+    }
 }
 
 class Analysts : Mbti() { // *NT*
-//TODO
+    fun anaListOf(): ArrayList<String> {
+        return arrayListOf("intp", "intj", "entp", "entj")
+    }
 }
 
 class Sentinels : Mbti() { // *S*J
-//TODO
+    fun senListOf(): ArrayList<String> {
+        return arrayListOf("istj", "isfj", "estj", "esfj")
+    }
+
 }
