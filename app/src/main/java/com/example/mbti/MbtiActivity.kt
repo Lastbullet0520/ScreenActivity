@@ -27,32 +27,24 @@ open class MbtiActivity : ComponentActivity() {
         setContent {
             MbtiTheme {
                 MbtiScreen()
-
             }
         }
     }
-
     @Composable
     fun MbtiScreen() {
-
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()
         ) {
             Text(text = "당신의 유형은?")
-             val myMbti = Mbti()
+            val myMbti = Mbti()
             myMbti.KnowMbti(mbti = "탐험가형")
             myMbti.KnowMbti(mbti = "외교관형")
             myMbti.KnowMbti(mbti = "분석가형")
             myMbti.KnowMbti(mbti = "관리자형")
         }
-
     }
 }
-
-
-
-
 /* 첫번째 방법.
 *  각 버튼마다 Activity를 보내고,
 *  밑의 Mbti에 화면 구성을 넣은 후
@@ -62,32 +54,33 @@ open class MbtiActivity : ComponentActivity() {
 *  밑의 Mbti에 해당 값을 보내는 방식을 만들고,
 *  다음 Activity에는 값에 알맞는 이미지를 출력하게 하는 것
 *  관건은 onClick에 있는 값을 보낼 수 있는가 중요하다.*/
-
-
 open class Mbti {
     @Composable
     open fun KnowMbti(mbti: String) {
         val context = LocalContext.current as? Activity
-        Divider( modifier = Modifier.height(3.dp).background(Color(0xFFF9F9F9)))
+        Divider(
+            modifier = Modifier
+                .height(3.dp)
+                .background(Color(0xFFF9F9F9))
+        )
         Button(onClick = {
             val intent = Intent(context, ResultActivity::class.java)
-
-            val exp = Explorer()
-            val dip = Diplomats()
-            val ana = Analysts()
-            val sen = Sentinels()
-            when(mbti) {
+            when (mbti) {
                 "탐험가형" -> {
-                    intent.putExtra("type",exp.expListOf()) // '만약'(when) 여기서 버튼이 해당 값으로 들어가면, 값을 넘겨주는 것으로
+                    intent.putExtra("type", Explorer.expListOf()
+                    ) // '만약'(when) 여기서 버튼이 해당 값으로 들어가면, 값을 넘겨주는 것으로
                 }
+
                 "외교관형" -> {
-                    intent.putExtra("type", dip.dipListOf())
+                    intent.putExtra("type", Diplomats.dipListOf())
                 }
+
                 "분석가형" -> {
-                    intent.putExtra("type", ana.anaListOf())
+                    intent.putExtra("type", Analysts.anaListOf())
                 }
+
                 "관리자형" -> {
-                    intent.putExtra("type",sen.senListOf())
+                    intent.putExtra("type", Sentinels.senListOf())
                 }
             }
             context?.startActivity(intent)
@@ -96,30 +89,31 @@ open class Mbti {
         }
     }
 }
-
-
 private class Explorer : Mbti() { // *S*P
-    fun expListOf(): ArrayList<String> {
-        return arrayListOf("istp", "isfp", "estp", "esfp")
+    companion object {
+        fun expListOf(): ArrayList<String> {
+            return arrayListOf("istp", "isfp", "estp", "esfp")
+        }
     }
-
 }
-
 private class Diplomats : Mbti() {  // *NF*
-    fun dipListOf(): ArrayList<String> {
-        return arrayListOf("infp", "infj", "enfp", "enfj")
+    companion object {
+        fun dipListOf(): ArrayList<String> {
+            return arrayListOf("infp", "infj", "enfp", "enfj")
+        }
     }
 }
-
 private class Analysts : Mbti() { // *NT*
-    fun anaListOf(): ArrayList<String> {
-        return arrayListOf("intp", "intj", "entp", "entj")
+    companion object {
+        fun anaListOf(): ArrayList<String> {
+            return arrayListOf("intp", "intj", "entp", "entj")
+        }
     }
 }
-
 private class Sentinels : Mbti() { // *S*J
-    fun senListOf(): ArrayList<String> {
-        return arrayListOf("istj", "isfj", "estj", "esfj")
+    companion object {
+        fun senListOf(): ArrayList<String> {
+            return arrayListOf("istj", "isfj", "estj", "esfj")
+        }
     }
-
 }
