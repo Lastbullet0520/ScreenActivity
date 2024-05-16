@@ -8,6 +8,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -43,9 +45,9 @@ class ResultActivity : ComponentActivity() {
 
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(430.dp),
-            verticalArrangement = Arrangement.Center
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
                 modifier = Modifier
@@ -73,6 +75,7 @@ class ResultActivity : ComponentActivity() {
                 )
 
             }
+            Spacer(modifier = Modifier.height(60.dp).fillMaxWidth())
             Button(onClick = {
                 context?.finish()
             }) {
@@ -82,11 +85,11 @@ class ResultActivity : ComponentActivity() {
     }
 
     @Composable
-    fun MbtiImage(modifier: Modifier, type: String?) {
+    private fun MbtiImage(modifier: Modifier, type: String?) {
         val typeEncoder = if (type.isNullOrEmpty()) {
             0
         } else {
-            resources.getIdentifier("$type", "drawable", "com.example.mbti")
+            resources.getIdentifier("$type", "drawable", packageName)
         }
         if (typeEncoder != 0 ) {
             Image(

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.mbti.ui.theme.MbtiTheme
@@ -66,10 +68,10 @@ open class Mbti {
     @Composable
     open fun KnowMbti(mbti: String) {
         val context = LocalContext.current as? Activity
-        Divider( modifier = Modifier.height(3.dp))
+        Divider( modifier = Modifier.height(3.dp).background(Color(0xFFF9F9F9)))
         Button(onClick = {
             val intent = Intent(context, ResultActivity::class.java)
-            context?.startActivity(intent)
+
             val exp = Explorer()
             val dip = Diplomats()
             val ana = Analysts()
@@ -78,7 +80,6 @@ open class Mbti {
                 "탐험가형" -> {
                     intent.putExtra("type",exp.expListOf()) // '만약'(when) 여기서 버튼이 해당 값으로 들어가면, 값을 넘겨주는 것으로
                 }
-
                 "외교관형" -> {
                     intent.putExtra("type", dip.dipListOf())
                 }
@@ -97,26 +98,26 @@ open class Mbti {
 }
 
 
-open class Explorer : Mbti() { // *S*P
+private class Explorer : Mbti() { // *S*P
     fun expListOf(): ArrayList<String> {
         return arrayListOf("istp", "isfp", "estp", "esfp")
     }
 
 }
 
-class Diplomats : Mbti() {  // *NF*
+private class Diplomats : Mbti() {  // *NF*
     fun dipListOf(): ArrayList<String> {
         return arrayListOf("infp", "infj", "enfp", "enfj")
     }
 }
 
-class Analysts : Mbti() { // *NT*
+private class Analysts : Mbti() { // *NT*
     fun anaListOf(): ArrayList<String> {
         return arrayListOf("intp", "intj", "entp", "entj")
     }
 }
 
-class Sentinels : Mbti() { // *S*J
+private class Sentinels : Mbti() { // *S*J
     fun senListOf(): ArrayList<String> {
         return arrayListOf("istj", "isfj", "estj", "esfj")
     }
