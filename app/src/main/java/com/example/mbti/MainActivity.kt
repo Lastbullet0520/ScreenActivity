@@ -35,19 +35,19 @@ class MainActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "test 드가자", fontSize = 24.sp)
+            Text(text = "MBTI 유형 보러가자", fontSize = 24.sp)
             Button(onClick = {
                 val intent = Intent(context, MbtiActivity::class.java)
                 context?.startActivity(intent)
             }) {
-                Text(text = "ㄱㄱ")
+                Text(text = "드가자")
 
             }
             Button(onClick = {
                 val intent = Intent(context, BackwardActivity::class.java)
                 context?.startActivity(intent)
             }) {
-                Text(text = "ㄴㄴ")
+                Text(text = "다음에...")
 
             }
         }

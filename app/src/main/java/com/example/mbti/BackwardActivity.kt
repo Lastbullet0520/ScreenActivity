@@ -33,7 +33,7 @@ class BackwardActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "해당 테스트는 미완성 입니다.")
+            Text(text = "해당 버튼은 미완성 입니다.")
             Button(onClick = {
                 context?.finish()
             }) {
